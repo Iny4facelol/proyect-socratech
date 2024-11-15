@@ -1,3 +1,9 @@
-body {
-  background-color: rgb(95, 94, 94);
-}
+/* nav {
+  background-color: #11888f;
+
+  a {
+    &:hover {
+      color: #e3b741;
+    }
+  }
+} */

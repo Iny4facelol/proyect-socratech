@@ -19,7 +19,7 @@
     <main>
       <section class="w-2/4 mx-auto py-5">
         <form
-          action="/pets/editPet/<%= data.pet_owner_id %>/<%= data.pet_id %>/<%= data.pet_img %>"
+          action="/pets/editPet/<%= data.pet_owner_id %>/<%= data.pet_id %>/<%= data.pet_img?data.pet_img:'null' %>"
           method="post"
           enctype="multipart/form-data"
         >
