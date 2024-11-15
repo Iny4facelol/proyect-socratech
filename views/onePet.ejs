@@ -20,12 +20,12 @@
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-5 gap-10"
           >
             <div
-              class="w-full shadow-md shadow-black bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              class="w-full shadow-md shadow-black cursor-pointer bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             >
               <div>
                 <img
                   class="rounded-t-lg w-full h-96 object-cover"
-                  src="/images/owner-img/<%= finalResult.pet_owner_img?finalResult.pet_owner_img:'defaultOwner.webp' %>"
+                  src="/images/pets-img/<%= data.pet_img?data.pet_img:'defaultPet.png' %>"
                   alt=""
                 />
               </div>
@@ -33,69 +33,54 @@
                 <h5
                   class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
                 >
-                  <%= finalResult.pet_owner_name %> <%=
-                  finalResult.pet_owner_lastname %>
+                  <%= data.pet_name %>
                 </h5>
+                <a
+                  href="/categories/<%= data.category_id %>"
+                  class="mb-3 font-normal text-gray-700 dark:text-gray-400"
+                >
+                  <%= data.category_name %>
+                </a>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  <%= finalResult.bio %>
+                  <%= data.pet_desc %>
                 </p>
                 <button
-                  onclick="window.location.href=`/petOwners/editOwner/<%= finalResult.pet_owner_id %>/<%= finalResult.pet_owner_img ? finalResult.pet_owner_img : 'null' %>`"
+                  onclick="window.location.href='/pets/editPet/<%= data.pet_owner_id %>/<%= data.pet_id %>/<%= data.pet_img %>'"
                   type="button"
                   class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                 >
-                  Editar Perfil
+                  Editar Mascota
                 </button>
                 <button
-                  onclick="window.location.href='/petOwners/totalDelete/<%= finalResult.pet_owner_id %>'"
+                  onclick="window.location.href='/pets/totalDelete/<%= data.pet_owner_id %>/<%= data.pet_id %>'"
                   type="button"
                   class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                 >
-                  Eliminar Perfil
+                  Borrar Mascota
                 </button>
                 <button
-                  onclick="window.location.href='/petOwners/logicDelete/<%= finalResult.pet_owner_id %>'"
+                  onclick="window.location.href='/pets/logicDelete/<%= data.pet_owner_id %>/<%= data.pet_id %>'"
                   type="button"
                   class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                 >
-                  Eliminar Temporalmente
+                  Borrar Mascota Temporalmente
                 </button>
+              </div>
+              <div>
+                <h2>
+                  SI QUIERES ADOPTAR a <%= data.pet_name %> LLAMA A <%=
+                  data.phone_num %> En la dirección <%= data.address %>
+                </h2>
               </div>
             </div>
           </article>
         </div>
       </section>
       <section>
-        <div class="max-w-screen-xl mx-auto">
-          <article
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-5 gap-10"
-          >
-            <% finalResult.pets.forEach((pet) => { %>
-            <div
-              onclick="window.location.href='/pets/onePet/<%= pet.pet_owner_id %>/<%= pet.pet_id %>'"
-              class="w-full shadow-md shadow-black bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-            >
-              <div>
-                <img
-                  class="rounded-t-lg w-full h-96 object-cover"
-                  src="/images/pets-img/<%= pet.pet_img?pet.pet_img:'defaultBoth.webp' %>"
-                  alt=""
-                />
-              </div>
-              <div class="p-5">
-                <h5
-                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                >
-                  <%= pet.pet_name %>
-                </h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  <%= pet.pet_desc %>
-                </p>
-              </div>
-            </div>
-            <% }) %>
-          </article>
-        </div>
+        <h3>
+          OTRAS MASCOTAS EN ADOPCION DE <%= data.pet_owner_name %>
+          <a href="/petOwners/oneOwner/<%= data.pet_owner_id %>">Aquí</a>
+        </h3>
       </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>

@@ -27,7 +27,7 @@
               <div>
                 <img
                   class="rounded-t-lg w-full h-96 object-cover"
-                  src="/images/owner-img/<%= owner.pet_owner_img %>"
+                  src="/images/owner-img/<%= owner.pet_owner_img?owner.pet_owner_img:'defaultOwner.webp' %>"
                   alt=""
                 />
               </div>

@@ -8,12 +8,14 @@
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
       rel="stylesheet"
     />
-    <title>Personajes</title>
+    <title>Perros</title>
   </head>
   <body class="dark:bg-gray-800">
     <header><%- include("./modules/nav.ejs") %></header>
     <main>
-      <h2 class="text-white text-center text-3xl font-bold py-5">Personajes</h2>
+      <h2 class="text-neutral-900 text-center text-3xl font-bold py-5">
+        Todos los perros
+      </h2>
       <section>
         <div class="max-w-screen-xl mx-auto">
           <article
@@ -27,7 +29,7 @@
               <div>
                 <img
                   class="rounded-t-lg w-full h-96 object-cover"
-                  src="/images/dogs-img/<%= dog.pet_img %>"
+                  src="/images/pets-img/<%= dog.pet_img?dog.pet_img:'defaultDog.avif' %>"
                   alt=""
                 />
               </div>

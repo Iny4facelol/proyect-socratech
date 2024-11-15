@@ -1,18 +1,101 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/stylesheets/common.css">
-    <script src="https://cdn.tailwindcss.com"></script>
     <title>PawFound</title>
   </head>
-  <body>
+  <body class="dark:bg-gray-800">
     <header><%- include("./modules/nav.ejs") %></header>
+    <main>
+      <section>
+        <div class="max-w-screen-xl mx-auto">
+          <article
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-5 gap-10"
+          >
+            <% data.slice(0,3).forEach((pet) => { %>
+            <div
+              class="w-full shadow-md shadow-black cursor-pointer bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+            >
+              <div>
+                <img
+                  onclick="window.location.href='/pets/onePet/<%= pet.pet_owner_id %>/<%= pet.pet_id %>'"
+                  class="rounded-t-lg w-full h-96 object-cover"
+                  src="/images/pets-img/<%= pet.pet_img?pet.pet_img:'defaultCat.webp' %>"
+                  alt=""
+                />
+              </div>
+              <div class="p-5">
+                <a
+                  href="/categories/<%= pet.category_id %>"
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                >
+                  <%= pet.category_name %>
+                </a>
+                <h5
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                >
+                  <%= pet.pet_name %>
+                </h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  <%= pet.pet_desc %>
+                </p>
+                <a
+                  href="/petOwners/oneOwner/<%= pet.pet_owner_id %>"
+                  class="mb-3 font-normal text-gray-700 dark:text-gray-400"
+                >
+                  En el perfil de <%= pet.pet_owner_name %>
+                </a>
+              </div>
+            </div>
+            <% }) %>
+          </article>
+        </div>
+      </section>
+      <section>
+        <div class="max-w-screen-xl mx-auto">
+          <article
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-5 gap-10"
+          >
+            <% data.slice(3).forEach((pet) => { %>
+            <div
+              class="w-full shadow-md shadow-black cursor-pointer bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+            >
+              <div>
+                <img
+                  class="rounded-t-lg w-full h-96 object-cover"
+                  src="/images/pets-img/<%= pet.pet_img?pet.pet_img:'defaultPet.png' %>"
+                  alt=""
+                />
+              </div>
+              <div class="p-5">
+                <a
+                  href="/categories/<%= pet.category_id %>"
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                >
+                  <%= pet.category_name %>
+                </a>
+                <h5
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                >
+                  <%= pet.pet_name %>
+                </h5>
+
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  <%= pet.pet_desc %>
+                </p>
+              </div>
+            </div>
+            <% }) %>
+          </article>
+        </div>
+      </section>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
   </body>
 </html>

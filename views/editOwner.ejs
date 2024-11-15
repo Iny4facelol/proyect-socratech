@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Edición de Perfil</title>
+  </head>
+  <body class="dark:bg-gray-700">
+    <header><%- include("./modules/nav.ejs") %></header>
+    <h1 class="text-3xl font-bold text-black text-center py-5">
+      Edición de Perfil
+    </h1>
+    <main>
+      <section class="w-2/4 mx-auto py-5">
+        <form
+          action="/petOwners/editOwner/<%= data.pet_owner_id %>/<%= data.pet_owner_img?data.pet_owner_img:'null' %>"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="grid gap-6 mb-6 md:grid-cols-2">
+            <div>
+              <label
+                for="first_name"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Nombre *</label
+              >
+              <input
+                name="pet_owner_name"
+                value="<%= data.pet_owner_name %>"
+                type="text"
+                id="first_name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="John"
+              />
+            </div>
+            <div>
+              <label
+                for="last_name"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Apellidos
+              </label>
+              <input
+                name="pet_owner_lastname"
+                value="<%= data.pet_owner_lastname %>"
+                type="text"
+                id="last_name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Doe"
+              />
+            </div>
+            <div>
+              <label
+                for="address"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Dirección *</label
+              >
+              <input
+                name="address"
+                value="<%= data.address %>"
+                type="text"
+                id="address"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Doe"
+              />
+            </div>
+            <div>
+              <label
+                for="phone_num"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Nº de teléfono *</label
+              >
+              <input
+                name="phone_num"
+                value="<%= data.phone_num %>"
+                type="text"
+                id="phone_num"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Doe"
+              />
+            </div>
+          </div>
+          <div class="mb-6">
+            <label
+              for="email"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Tu Email *</label
+            >
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+              >
+                <svg
+                  class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 16"
+                >
+                  <path
+                    d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"
+                  />
+                  <path
+                    d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"
+                  />
+                </svg>
+              </div>
+              <input
+                name="email"
+                value="<%= data.email %>"
+                type="text"
+                id="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="tucorreo@email.com"
+              />
+            </div>
+            <p class="text-red-600 py-2">
+              <%= typeof messageEmail != "undefined" ? messageEmail : null %>
+            </p>
+          </div>
+          <div class="mb-5">
+            <label
+              for="large-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Descripción *</label
+            >
+            <input
+              name="bio"
+              value="<%= data.bio %>"
+              type="text"
+              id="large-input"
+              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="large-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Imagen Actual
+            </label>
+            <div class="w-56">
+              <img
+                class="objet-cover"
+                src="/images/owner-img/<%= data.pet_owner_img %>"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="mb-6">
+            <label
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              for="user_avatar"
+              >Imágen para tu perfil *</label
+            >
+            <input
+              name="img"
+              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+              aria-describedby="user_avatar_help"
+              id="user_avatar"
+              type="file"
+            />
+            <div
+              class="mt-1 text-sm text-gray-500 dark:text-gray-300"
+              id="user_avatar_help"
+            >
+              Una imágen para mostrar a los demás usuarios
+            </div>
+          </div>
+          <p class="text-red-600 pb-4">
+            <%= typeof message != "undefined" ? message: null %>
+          </p>
+          <button
+            type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Enviar
+          </button>
+          <button
+            onclick="window.location.href='/petOwners/oneOwner/<%= data.pet_owner_id %>'"
+            type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Cancelar
+          </button>
+        </form>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+  </body>
+</html>
