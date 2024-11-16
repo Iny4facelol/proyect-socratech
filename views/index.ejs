@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/javascripts/tailwind.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <link rel="stylesheet" href="/stylesheets/common.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
@@ -18,15 +20,11 @@
     />
     <title>PawFound</title>
   </head>
-  <body class="bg-white dark:bg-gray-400 font-['Raleway']">
+  <body class="bg-white font-['Raleway']">
     <%- include("./modules/nav.ejs") %>
     <main>
-      <section class="py-10">
-        <div class="max-w-screen-xl mx-auto px-5 flex justify-center">
-          <img src="/images/mainLogo.png" alt="" />
-        </div>
-      </section>
-      <section class="bg-secondBlue mb-10">
+      <%- include("./modules/logoSection.ejs") %>
+      <section class="bg-secondBlue mb-24">
         <div
           class="max-w-screen-xl mx-auto flex flex-col sm:flex-row px-5 gap-5"
         >
@@ -54,15 +52,17 @@
           </article>
         </div>
       </section>
-      <section class="mb-36">
-        <div class="max-w-screen-xl mx-auto px-5 flex gap-36">
+      <section class="mb-24">
+        <div
+          class="max-w-screen-xl mx-auto px-5 flex gap-36 justify-center lg: justify-left"
+        >
           <article
             class="flex flex-col gap-5 w-2/4 flex flex-col justify-center"
           >
-            <h2 class="text-mainBlue text-left font-bold text-3xl mb-2">
+            <h2 class="text-mainBlue text-left font-bold text-3xl mb-2 txt-1">
               ¿Cómo funciona PawFound?
             </h2>
-            <p class="text-wrap">
+            <p class="text-wrap txt-2">
               A través de nuestra página, puedes explorar una amplia variedad de
               perfiles de mascotas en adopción. Cada perfil incluye información
               detallada sobre el animal, como su personalidad, necesidades y
@@ -73,7 +73,7 @@
                 de adopción.
               </span>
             </p>
-            <p class="text-wrap">
+            <p class="text-wrap txt-2">
               <span class="font-bold">
                 Si eres un refugio, organización o individuo que busca un hogar
                 para una mascota, puedes darte de alta en nuestra plataforma
@@ -84,21 +84,21 @@
               animal que lo necesita.
             </p>
           </article>
-          <article class="w-2/4">
+          <article class="w-2/4 hidden lg:block">
             <img
-              class="w-full"
+              class="w-full h-[355px]"
               src="images/assets/img-01.webp"
               alt="Una casa de gatitos con gatitos"
             />
           </article>
         </div>
       </section>
-      <section class="mb-10">
+      <section class="mb-24 headline">
         <div
           class="max-w-screen-xl px-5 mx-auto flex flex-col justify-center items-center"
         >
           <div
-            class="w-96 flex flex-col items-center justify-center gap-5 py-10"
+            class="w-96 flex flex-col items-center justify-center gap-4 py-10"
           >
             <img src="/images/assets/title-01.png" alt="Titulo" />
             <img src="/images/assets/diamond.png" alt="Subtitulo" />
@@ -108,12 +108,12 @@
           >
             <% data.slice(0,3).forEach((pet) => { %>
             <div
-              class="w-full  cursor-pointer bg-white border border-mainBlue rounded-lg  dark:bg-gray-800 dark:border-gray-700"
+              class="w-full bg-mainGreen border border-mainBlue rounded-lg dark:bg-gray-800 dark:border-gray-700"
             >
               <div>
                 <img
                   onclick="window.location.href='/pets/onePet/<%= pet.pet_owner_id %>/<%= pet.pet_id %>'"
-                  class="rounded-t-lg w-full h-96 object-cover"
+                  class="rounded-t-lg w-full h-80 object-cover cursor-pointer"
                   src="/images/pets-img/<%= pet.pet_img?pet.pet_img:'defaultCat.webp' %>"
                   alt=""
                 />
@@ -130,7 +130,61 @@
                 >
                   <%= pet.pet_name %>
                 </h5>
-                <p class="mb-3  text-gray-700">
+                <p class="mb-3 leading-relaxed text-pretty text-gray-700">
+                  <%= pet.pet_desc %>
+                </p>
+                <div class="w-full h-0.5 bg-mainBlue mb-4"></div>
+                <a
+                  href="/petOwners/oneOwner/<%= pet.pet_owner_id %>"
+                  class="mb-3 font-normal text-gray-700"
+                >
+                  <%= pet.pet_owner_name %>
+                </a>
+              </div>
+            </div>
+            <% }) %>
+          </article>
+        </div>
+      </section>
+      <section class="mb-24 headline-2">
+        <div class="max-w-screen-xl mx-auto px-5">
+          <div class="flex flex-col justify-center items-center py-10 gap-4">
+            <h2 class="text-mainBlue text-center font-bold text-3xl">
+              Mascotas que se acaban de unir a nuestra web
+            </h2>
+            <img
+              src="/images/assets/diamond.png"
+              alt="Subtitulo en forma de diamante"
+            />
+          </div>
+          <article
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+          >
+            <% data.slice(3,6).forEach((pet) => { %>
+            <div
+              class="w-full bg-mainGreen border border-mainBlue rounded-lg dark:bg-gray-800 dark:border-gray-700"
+            >
+              <div>
+                <img
+                  onclick="window.location.href='/pets/onePet/<%= pet.pet_owner_id %>/<%= pet.pet_id %>'"
+                  class="rounded-t-lg w-full h-80 object-cover cursor-pointer"
+                  src="/images/pets-img/<%= pet.pet_img?pet.pet_img:'defaultCat.webp' %>"
+                  alt=""
+                />
+              </div>
+              <div class="p-5">
+                <a
+                  href="/categories/<%= pet.category_id %>"
+                  class="mb-2 text-xs uppercase text-mainBlue font-extrabold tracking-tight text-gray-900"
+                >
+                  <%= pet.category_name %>
+                </a>
+                <h5
+                  class="mb-2 text-3xl font-bold tracking-tight text-gray-900"
+                >
+                  <%= pet.pet_name %>
+                </h5>
+                <p class="mb-3 leading-relaxed text-pretty text-gray-700">
                   <%= pet.pet_desc %>
                 </p>
                 <div class="w-full h-0.5 bg-mainBlue mb-4"></div>
@@ -138,7 +192,7 @@
                   href="/petOwners/oneOwner/<%= pet.pet_owner_id %>"
                   class="mb-3 font-normal text-gray-700 dark:text-gray-400"
                 >
-                  En el perfil de <%= pet.pet_owner_name %>
+                  <%= pet.pet_owner_name %>
                 </a>
               </div>
             </div>
@@ -146,45 +200,20 @@
           </article>
         </div>
       </section>
-      <section class="mb-10">
-        <div class="max-w-screen-xl mx-auto px-5">
-          <article
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
-          >
-            <% data.slice(3).forEach((pet) => { %>
-            <div
-              class="w-full shadow-md shadow-black cursor-pointer bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-            >
-              <div>
-                <img
-                  class="rounded-t-lg w-full h-96 object-cover"
-                  src="/images/pets-img/<%= pet.pet_img?pet.pet_img:'defaultPet.png' %>"
-                  alt=""
-                />
-              </div>
-              <div class="p-5">
-                <a
-                  href="/categories/<%= pet.category_id %>"
-                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                >
-                  <%= pet.category_name %>
-                </a>
-                <h5
-                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                >
-                  <%= pet.pet_name %>
-                </h5>
-
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  <%= pet.pet_desc %>
-                </p>
-              </div>
-            </div>
-            <% }) %>
-          </article>
+      <div
+        class="max-w-screen-2xl sticky mx-auto bottom-5 flex justify-end p-2 z-10"
+      >
+        <div
+          id="scrollUp"
+          class="mb-4 left-20 relative sticky left-20 text-mainBlue border-4 border-mainBlue rounded-full cursor-pointer"
+        >
+          <%- include("./modules/arrowUp.ejs") %>
         </div>
-      </section>
+      </div>
     </main>
+    <%- include("./modules/footer.ejs") %>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="/javascripts/scroll.js"></script>
+    <script src="/javascripts/arrow.js"></script>
   </body>
 </html>

@@ -4,17 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/javascripts/tailwind.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Personajes</title>
   </head>
-  <body class="dark:bg-gray-800">
+  <body class="bg-white font-['Raleway']">
     <header><%- include("./modules/nav.ejs") %></header>
     <main>
-      <h2 class="text-white text-center text-3xl font-bold py-5">Personajes</h2>
-      <section>
+      <%- include("./modules/logoSection.ejs") %>
+      <section class="mb-24">
         <div class="max-w-screen-xl mx-auto">
           <article
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-5 gap-10"
@@ -22,11 +29,11 @@
             <% data.forEach((owner) => { %>
             <div
               onclick="window.location.href='/petOwners/oneOwner/<%= owner.pet_owner_id %>'"
-              class="w-full shadow-md shadow-black cursor-pointer bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              class="w-full bg-mainGreen border border-mainBlue rounded-lg dark:bg-gray-800 dark:border-gray-700"
             >
               <div>
                 <img
-                  class="rounded-t-lg w-full h-96 object-cover"
+                  class="rounded-t-lg w-full h-80 object-cover cursor-pointer"
                   src="/images/owner-img/<%= owner.pet_owner_img?owner.pet_owner_img:'defaultOwner.webp' %>"
                   alt=""
                 />
@@ -37,7 +44,8 @@
                 >
                   <%= owner.pet_owner_name %> <%= owner.pet_owner_lastname %>
                 </h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <div class="w-full h-0.5 bg-mainBlue mb-4"></div>
+                <p class="mb-3 font-normal text-gray-700 leading-relaxed text-pretty ">
                   <%= owner.bio %>
                 </p>
               </div>
@@ -47,6 +55,7 @@
         </div>
       </section>
     </main>
+    <%- include("./modules/footer.ejs") %>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
   </body>
 </html>

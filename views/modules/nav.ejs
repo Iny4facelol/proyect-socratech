@@ -1,6 +1,6 @@
-<nav class="sticky top-0 bg-mainBlue border-gray-200 ">
+<nav class="sticky top-0 bg-mainBlue border-gray-200">
   <div
-    class="max-w-screen-xl flex flex-wrap items-center   px-5 justify-between mx-auto p-4"
+    class="max-w-screen-xl flex flex-wrap items-center px-5 justify-between mx-auto p-4"
   >
     <div class="flex gap-5">
       <a
@@ -25,7 +25,7 @@
     <button
       data-collapse-toggle="navbar-default"
       type="button"
-      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg md:hidden  focus:outline-none focus:ring-2 focus:ring-gray-200 "
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-gray-200"
       aria-controls="navbar-default"
       aria-expanded="false"
     >
@@ -60,7 +60,7 @@
           <button
             id="dropdownNavbarLink"
             data-dropdown-toggle="dropdownNavbar"
-            class="flex items-center justify-between w-full py-2 px-3 text-white rounded  hover:text-mainOrange md:hover:bg-transparent md:border-0 md:p-0 md:w-auto"
+            class="flex items-center justify-between w-full py-2 px-3 text-white rounded hover:text-mainOrange md:hover:bg-transparent md:border-0 md:p-0 md:w-auto"
           >
             Mascotas
             <svg
@@ -115,11 +115,11 @@
         <li>
           <a
             href="/petOwners"
-            class="block py-2 px-3 text-white rounded  md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 "
+            class="block py-2 px-3 text-white rounded md:border-0 md:hover:text-mainOrange md:p-0"
             >Usuarios</a
           >
         </li>
-        <li>
+        <div class="flex gap-4 md:hidden">
           <button
             type="button"
             class="py-2.5 transition-all px-5 text-sm font-medium text-mainBlue focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:bg-secondBlue focus:z-10 focus:ring-4 focus:ring-gray-100"
@@ -127,8 +127,6 @@
           >
             Regístrate
           </button>
-        </li>
-        <li>
           <button
             onclick="window.location.href='/petOwners/login'"
             type="button"
@@ -136,8 +134,24 @@
           >
             Accede
           </button>
-        </li>
+        </div>
       </ul>
+    </div>
+    <div class="flex gap-4 hidden md:flex">
+      <button
+        type="button"
+        class="py-2.5 transition-all px-5 text-sm font-medium text-mainBlue focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:bg-secondBlue focus:z-10 focus:ring-4 focus:ring-gray-100"
+        onclick="window.location.href='/petOwners/register'"
+      >
+        Regístrate
+      </button>
+      <button
+        onclick="window.location.href='/petOwners/login'"
+        type="button"
+        class="py-2.5 transition-all px-5 text-sm font-medium text-mainBlue focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:bg-secondBlue focus:z-10 focus:ring-4 focus:ring-gray-100"
+      >
+        Accede
+      </button>
     </div>
   </div>
 </nav>

@@ -4,17 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/javascripts/tailwind.js"></script>
+
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
       rel="stylesheet"
     />
-    <title>Personajes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Perfil de <%= finalResult.pet_owner_name %></title>
   </head>
-  <body class="dark:bg-gray-800">
+  <body class="bg-white font-['Raleway']">
     <header><%- include("./modules/nav.ejs") %></header>
     <main>
-      <h2 class="text-white text-center text-3xl font-bold py-5">Personajes</h2>
-      <section>
+      <%- include("./modules/logoSection.ejs") %>
+      <!-- <section>
+
         <div class="max-w-screen-xl mx-auto">
           <article
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-5 gap-10"
@@ -64,31 +73,89 @@
             </div>
           </article>
         </div>
-      </section>
-      <section>
-        <div class="max-w-screen-xl mx-auto">
+      </section> -->
+      <section class="mb-24">
+        <div
+          class="max-w-screen-xl mx-auto px-6 sm:px-4 flex flex-col lg:flex-row gap-y-10 gap-36 justify-center items-center lg:justify-left"
+        >
+          <article class="w-full sm:w-3/4 lg:w-2/4 ">
+            <img
+              class="w-full h-56 sm:h-[376px] object-cover"
+              src="/images/owner-img/<%= finalResult.pet_owner_img?finalResult.pet_owner_img:'defaultOwner.webp' %>"
+              alt="Una casa de gatitos con gatitos"
+            />
+          </article>
           <article
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-5 gap-10"
+            class="flex flex-col gap-5 w-full  sm:w-3/4 lg:w-2/4  flex flex-col justify-between"
+          >
+            <h2 class="text-mainBlue text-left font-bold text-3xl mb-2 txt-1">
+              <%= finalResult.pet_owner_name %> <%=
+              finalResult.pet_owner_lastname %>
+            </h2>
+            <p class="text-wrap txt-2 font-bold"><%= finalResult.address %></p>
+            <p class="text-wrap txt-2"><%= finalResult.bio %></p>
+            <div class="flex items-center flex-col sm:flex-row gap-2">
+              <button
+                onclick="window.location.href=`/petOwners/editOwner/<%= finalResult.pet_owner_id %>/<%= finalResult.pet_owner_img ? finalResult.pet_owner_img : 'null' %>`"
+                type="button"
+                class="text-white bg-mainBlue hover:bg-hoverBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+              >
+                Editar Perfil
+              </button>
+              <button
+                onclick="window.location.href='/petOwners/totalDelete/<%= finalResult.pet_owner_id %>'"
+                type="button"
+                class="text-white bg-mainBlue hover:bg-hoverBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+              >
+                Eliminar Perfil
+              </button>
+              <button
+                onclick="window.location.href='/petOwners/logicDelete/<%= finalResult.pet_owner_id %>'"
+                type="button"
+                class="text-white bg-mainBlue hover:bg-hoverBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+              >
+                Eliminar Temporalmente
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="mb-24">
+        <div class="max-w-screen-xl px-6 sm:px-4 mx-auto">
+          <div
+            class="max-w-screen-xl mx-auto px-4 flex flex-col justify-center items-center py-10 gap-4"
+          >
+            <h2 class="text-mainBlue text-center font-bold text-3xl">
+              Otras mascotas en adopción por <%= finalResult.pet_owner_name %>
+            </h2>
+            <img
+              src="/images/assets/diamond.png"
+              alt="Subtitulo en forma de diamante"
+            />
+          </div>
+          <article
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
           >
             <% finalResult.pets.forEach((pet) => { %>
             <div
               onclick="window.location.href='/pets/onePet/<%= pet.pet_owner_id %>/<%= pet.pet_id %>'"
-              class="w-full shadow-md shadow-black bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              class="w-full bg-mainGreen border border-mainBlue rounded-lg dark:bg-gray-800 dark:border-gray-700"
             >
               <div>
                 <img
-                  class="rounded-t-lg w-full h-96 object-cover"
+                  class="rounded-t-lg w-full h-80 object-cover"
                   src="/images/pets-img/<%= pet.pet_img?pet.pet_img:'defaultBoth.webp' %>"
                   alt=""
                 />
               </div>
               <div class="p-5">
                 <h5
-                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                  class="mb-2 text-3xl font-bold tracking-tight text-gray-900"
                 >
                   <%= pet.pet_name %>
                 </h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <div class="w-full h-0.5 bg-mainBlue mb-4"></div>
+                <p class="mb-3 leading-relaxed text-pretty text-gray-700">
                   <%= pet.pet_desc %>
                 </p>
               </div>
@@ -98,6 +165,7 @@
         </div>
       </section>
     </main>
+    <%- include("./modules/footer.ejs") %>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
   </body>
 </html>
