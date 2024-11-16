@@ -15,6 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <%- include("./modules/favicon.ejs") %>
     <title>Perfil de <%= data.pet_name %></title>
   </head>
   <body class="dark:bg-gray-800">
@@ -77,11 +78,11 @@
         <div class="max-w-screen-xl mx-auto px-6 sm:px-4">
           <article class="flex flex-col justify-center items-center">
             <h2
-              class="text-mainBlue text-center  font-bold text-3xl mb-2 txt-1 mb-4"
+              class="text-mainBlue text-center font-bold text-3xl mb-2 txt-1 mb-4"
             >
               ¡Quiero adoptar a <%= data.pet_name %>!
             </h2>
-            <p class="mb-8 text-center ">
+            <p class="mb-8 text-center">
               Para adoptar a esta mascota, ponte en contacto con
               <a
                 class="text-mainBlue hover:underline font-medium"

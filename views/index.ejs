@@ -18,6 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <%- include("./modules/favicon.ejs") %>
     <title>PawFound</title>
   </head>
   <body class="bg-white font-['Raleway']">
@@ -57,9 +58,11 @@
           class="max-w-screen-xl mx-auto px-5 flex gap-36 justify-center lg: justify-left"
         >
           <article
-            class="flex flex-col gap-5 w-2/4 flex flex-col justify-center"
+            class="flex flex-col gap-5 w-full sm:w-2/4 flex flex-col justify-center"
           >
-            <h2 class="text-mainBlue text-left font-bold text-3xl mb-2 txt-1">
+            <h2
+              class="text-mainBlue text-left font-bold text-2xl sm:text-3xl mb-2 txt-1"
+            >
               ¿Cómo funciona PawFound?
             </h2>
             <p class="text-wrap txt-2">
@@ -100,7 +103,11 @@
           <div
             class="w-96 flex flex-col items-center justify-center gap-4 py-10"
           >
-            <img src="/images/assets/title-01.png" alt="Titulo" />
+            <img
+              class="w-3/4 sm:w-full"
+              src="/images/assets/title-01.png"
+              alt="Titulo"
+            />
             <img src="/images/assets/diamond.png" alt="Subtitulo" />
           </div>
           <article
@@ -149,7 +156,9 @@
       <section class="mb-24 headline-2">
         <div class="max-w-screen-xl mx-auto px-5">
           <div class="flex flex-col justify-center items-center py-10 gap-4">
-            <h2 class="text-mainBlue text-center font-bold text-3xl">
+            <h2
+              class="text-mainBlue text-center font-bold text-2xl sm:text-3xl"
+            >
               Mascotas que se acaban de unir a nuestra web
             </h2>
             <img

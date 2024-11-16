@@ -16,7 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-
+    <%- include("./modules/favicon.ejs") %>
     <title>Registro</title>
   </head>
   <body class="bg-white font-['Raleway']">
@@ -33,56 +33,56 @@
             <div>
               <label
                 for="first_name"
-                class="block mb-2  font-medium text-gray-900 dark:text-white"
+                class="block mb-2 font-medium text-gray-900 dark:text-white"
                 >Nombre *</label
               >
               <input
                 name="pet_owner_name"
                 type="text"
                 id="first_name"
-                class="bg-gray-50 border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="John"
               />
             </div>
             <div>
               <label
                 for="last_name"
-                class="block mb-2  font-medium text-gray-900 dark:text-white"
+                class="block mb-2 font-medium text-gray-900 dark:text-white"
                 >Apellidos
               </label>
               <input
                 name="pet_owner_lastname"
                 type="text"
                 id="last_name"
-                class="bg-gray-50 border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Doe"
               />
             </div>
             <div>
               <label
                 for="address"
-                class="block mb-2  font-medium text-gray-900 dark:text-white"
+                class="block mb-2 font-medium text-gray-900 dark:text-white"
                 >Dirección *</label
               >
               <input
                 name="address"
                 type="text"
                 id="address"
-                class="bg-gray-50 border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Doe"
               />
             </div>
             <div>
               <label
                 for="phone_num"
-                class="block mb-2  font-medium text-gray-900 dark:text-white"
+                class="block mb-2 font-medium text-gray-900 dark:text-white"
                 >Nº de teléfono *</label
               >
               <input
                 name="phone_num"
                 type="text"
                 id="phone_num"
-                class="bg-gray-50 border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Doe"
               />
             </div>
@@ -90,7 +90,7 @@
           <div class="mb-6">
             <label
               for="email"
-              class="block mb-2  font-medium text-gray-900 dark:text-white"
+              class="block mb-2 font-medium text-gray-900 dark:text-white"
               >Tu Email *</label
             >
             <div class="relative">
@@ -116,7 +116,7 @@
                 name="email"
                 type="text"
                 id="email"
-                class="bg-gray-50 border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="tucorreo@email.com"
                 aria-describedby="helper-text"
               />
@@ -137,7 +137,7 @@
           <div class="mb-5">
             <label
               for="large-input"
-              class="block mb-2  font-medium text-gray-900 dark:text-white"
+              class="block mb-2 font-medium text-gray-900 dark:text-white"
               >Descripción *</label
             >
             <input
@@ -149,7 +149,7 @@
           </div>
           <div class="mb-6">
             <label
-              class="block mb-2  font-medium text-gray-900 dark:text-white"
+              class="block mb-2 font-medium text-gray-900 dark:text-white"
               for="user_avatar"
               >Imágen para tu perfil *</label
             >
@@ -170,7 +170,7 @@
           <div class="mb-6">
             <label
               for="password"
-              class="block mb-2  font-medium text-gray-900 dark:text-white"
+              class="block mb-2 font-medium text-gray-900 dark:text-white"
               >Contraseña</label
             >
             <input
@@ -184,7 +184,7 @@
           <div class="mb-6">
             <label
               for="confirm_password"
-              class="block mb-2  font-medium text-gray-900 dark:text-white"
+              class="block mb-2 font-medium text-gray-900 dark:text-white"
               >Confirma contraseña</label
             >
             <input

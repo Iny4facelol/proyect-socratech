@@ -15,6 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <%- include("./modules/favicon.ejs") %>
     <title>Personajes</title>
   </head>
   <body class="bg-white font-['Raleway']">
@@ -45,7 +46,9 @@
                   <%= owner.pet_owner_name %> <%= owner.pet_owner_lastname %>
                 </h5>
                 <div class="w-full h-0.5 bg-mainBlue mb-4"></div>
-                <p class="mb-3 font-normal text-gray-700 leading-relaxed text-pretty ">
+                <p
+                  class="mb-3 font-normal text-gray-700 leading-relaxed text-pretty"
+                >
                   <%= owner.bio %>
                 </p>
               </div>

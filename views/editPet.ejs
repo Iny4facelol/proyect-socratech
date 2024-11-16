@@ -16,6 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <%- include("./modules/favicon.ejs") %>
     <title>Edición de <%= data.pet_name %></title>
   </head>
   <body class="bg-white font-['Raleway']">
@@ -76,8 +77,8 @@
               <label
                 class="block mb-2 font-medium text-gray-900 dark:text-white"
                 for="user_avatar"
-                >Imagen de la mascota </label
-              >
+                >Imagen de la mascota
+              </label>
               <input
                 name="img"
                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"

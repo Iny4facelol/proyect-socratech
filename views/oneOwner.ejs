@@ -16,6 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <%- include("./modules/favicon.ejs") %>
     <title>Perfil de <%= finalResult.pet_owner_name %></title>
   </head>
   <body class="bg-white font-['Raleway']">
@@ -78,7 +79,7 @@
         <div
           class="max-w-screen-xl mx-auto px-6 sm:px-4 flex flex-col lg:flex-row gap-y-10 gap-36 justify-center items-center lg:justify-left"
         >
-          <article class="w-full sm:w-3/4 lg:w-2/4 ">
+          <article class="w-full sm:w-3/4 lg:w-2/4">
             <img
               class="w-full h-56 sm:h-[376px] object-cover"
               src="/images/owner-img/<%= finalResult.pet_owner_img?finalResult.pet_owner_img:'defaultOwner.webp' %>"
@@ -86,7 +87,7 @@
             />
           </article>
           <article
-            class="flex flex-col gap-5 w-full  sm:w-3/4 lg:w-2/4  flex flex-col justify-between"
+            class="flex flex-col gap-5 w-full sm:w-3/4 lg:w-2/4 flex flex-col justify-between"
           >
             <h2 class="text-mainBlue text-left font-bold text-3xl mb-2 txt-1">
               <%= finalResult.pet_owner_name %> <%=
