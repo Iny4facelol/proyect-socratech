@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/javascripts/tailwind.js"></script>
-
+    <link rel="stylesheet" href="/stylesheets/common.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
       rel="stylesheet"
@@ -17,7 +17,7 @@
       rel="stylesheet"
     />
     <%- include("./modules/favicon.ejs") %>
-    <title>Edición de <%= data.pet_name %></title>
+    <title>PawFound |Edición de <%= data.pet_name %></title>
   </head>
   <body class="bg-white font-['Raleway']">
     <header><%- include("./modules/nav.ejs") %></header>
@@ -31,9 +31,7 @@
             enctype="multipart/form-data"
           >
             <div class="mb-5">
-              <label
-                for="name"
-                class="block mb-2 font-medium text-gray-900 dark:text-white"
+              <label for="name" class="block mb-2 font-medium text-gray-900"
                 >Nombre de la mascota *</label
               >
               <input
@@ -41,14 +39,14 @@
                 value="<%= data.pet_name %>"
                 type="text"
                 id="name"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainBlue focus:border-mainBlue w-full p-2.5"
                 placeholder="John"
               />
             </div>
             <div class="mb-5">
               <label
                 for="description"
-                class="block mb-2 font-medium text-gray-900 dark:text-white"
+                class="block mb-2 font-medium text-gray-900"
                 >Descripción *</label
               >
               <input
@@ -56,13 +54,13 @@
                 value="<%= data.pet_desc %>"
                 type="text"
                 id="description"
-                class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-mainBlue focus:border-mainBlue"
               />
             </div>
             <div class="mb-6">
               <label
                 for="large-input"
-                class="block mb-2 font-medium text-gray-900 dark:text-white"
+                class="block mb-2 font-medium text-gray-900"
                 >Imagen Actual
               </label>
               <div class="sm:w-56 w-40">
@@ -75,21 +73,18 @@
             </div>
             <div class="mb-6">
               <label
-                class="block mb-2 font-medium text-gray-900 dark:text-white"
+                class="block mb-2 font-medium text-gray-900"
                 for="user_avatar"
                 >Imagen de la mascota
               </label>
               <input
                 name="img"
-                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
                 aria-describedby="user_avatar_help"
                 id="user_avatar"
                 type="file"
               />
-              <div
-                class="mt-1 text-sm text-gray-500 dark:text-gray-300"
-                id="user_avatar_help"
-              >
+              <div class="mt-1 text-sm text-gray-500" id="user_avatar_help">
                 Sube una bonita imagen de tu compañero
               </div>
             </div>

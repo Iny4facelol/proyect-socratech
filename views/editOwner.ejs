@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/javascripts/tailwind.js"></script>
+    <link rel="stylesheet" href="/stylesheets/common.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
       rel="stylesheet"
@@ -16,7 +17,7 @@
       rel="stylesheet"
     />
     <%- include("./modules/favicon.ejs") %>
-    <title>Edición de Perfil</title>
+    <title>PawFound | Edición de Perfil</title>
   </head>
   <body class="bg-white font-['Raleway']">
     <header><%- include("./modules/nav.ejs") %></header>
@@ -32,7 +33,7 @@
             <div>
               <label
                 for="first_name"
-                class="block mb-2 font-medium text-gray-900 dark:text-white"
+                class="block mb-2 font-medium text-gray-900"
                 >Nombre *</label
               >
               <input
@@ -40,14 +41,14 @@
                 value="<%= data.pet_owner_name %>"
                 type="text"
                 id="first_name"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainBlue focus:border-mainBlue block w-full p-2.5"
                 placeholder="John"
               />
             </div>
             <div>
               <label
                 for="last_name"
-                class="block mb-2 font-medium text-gray-900 dark:text-white"
+                class="block mb-2 font-medium text-gray-900"
                 >Apellidos
               </label>
               <input
@@ -55,14 +56,12 @@
                 value="<%= data.pet_owner_lastname %>"
                 type="text"
                 id="last_name"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainBlue focus:border-mainBlue block w-full p-2.5"
                 placeholder="Doe"
               />
             </div>
             <div>
-              <label
-                for="address"
-                class="block mb-2 font-medium text-gray-900 dark:text-white"
+              <label for="address" class="block mb-2 font-medium text-gray-900"
                 >Dirección *</label
               >
               <input
@@ -70,14 +69,14 @@
                 value="<%= data.address %>"
                 type="text"
                 id="address"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainBlue focus:border-mainBlue block w-full p-2.5"
                 placeholder="Doe"
               />
             </div>
             <div>
               <label
                 for="phone_num"
-                class="block mb-2 font-medium text-gray-900 dark:text-white"
+                class="block mb-2 font-medium text-gray-900"
                 >Nº de teléfono *</label
               >
               <input
@@ -85,15 +84,13 @@
                 value="<%= data.phone_num %>"
                 type="text"
                 id="phone_num"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainBlue focus:border-mainBlue block w-full p-2.5"
                 placeholder="Doe"
               />
             </div>
           </div>
           <div class="mb-6">
-            <label
-              for="email"
-              class="block mb-2 font-medium text-gray-900 dark:text-white"
+            <label for="email" class="block mb-2 font-medium text-gray-900"
               >Tu Email *</label
             >
             <div class="relative">
@@ -101,7 +98,7 @@
                 class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
               >
                 <svg
-                  class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  class="w-4 h-4 text-gray-500"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -120,7 +117,7 @@
                 value="<%= data.email %>"
                 type="text"
                 id="email"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainBlue focus:border-mainBlue block w-full ps-10 p-2.5"
                 placeholder="tucorreo@email.com"
               />
             </div>
@@ -131,7 +128,7 @@
           <div class="mb-5">
             <label
               for="large-input"
-              class="block mb-2 font-medium text-gray-900 dark:text-white"
+              class="block mb-2 font-medium text-gray-900"
               >Descripción *</label
             >
             <input
@@ -139,13 +136,13 @@
               value="<%= data.bio %>"
               type="text"
               id="large-input"
-              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-mainBlue focus:border-mainBlue"
             />
           </div>
           <div class="mb-6">
             <label
               for="large-input"
-              class="block mb-2 font-medium text-gray-900 dark:text-white"
+              class="block mb-2 font-medium text-gray-900"
               >Imagen Actual
             </label>
             <div class="sm:w-56 w-40 select-none">
@@ -158,21 +155,18 @@
           </div>
           <div class="mb-6">
             <label
-              class="block mb-2 font-medium text-gray-900 dark:text-white"
+              class="block mb-2 font-medium text-gray-900"
               for="user_avatar"
               >Imágen para tu perfil *</label
             >
             <input
               name="img"
-              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
               aria-describedby="user_avatar_help"
               id="user_avatar"
               type="file"
             />
-            <div
-              class="mt-1 text-sm text-gray-500 dark:text-gray-300"
-              id="user_avatar_help"
-            >
+            <div class="mt-1 text-sm text-gray-500" id="user_avatar_help">
               Una imágen para mostrar a los demás usuarios
             </div>
           </div>

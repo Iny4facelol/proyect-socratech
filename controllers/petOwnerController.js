@@ -1,6 +1,9 @@
 const connection = require("../config/db");
 const bcrypt = require("bcrypt");
 const deleteFile = require("../utils/deleteFile");
+const ownerModel = require("../models/ownerModel");
+
+
 
 class PetOwnerController {
   openRegisterForm = (req, res) => {
@@ -108,8 +111,7 @@ class PetOwnerController {
     });
   };
   openOwner = (req, res) => {
-    let sql = "SELECT * FROM pet_owner WHERE pet_owner_is_deleted = false";
-    connection.query(sql, (err, result) => {
+    ownerModel.openOwnerQuery((err, result) => {
       if (err) {
         throw err;
       } else {
@@ -139,7 +141,7 @@ class PetOwnerController {
           if (e.pet_id) {
             pet = {
               pet_id: e.pet_id,
-              pet_owner_id:  e.pet_owner_id,
+              pet_owner_id: e.pet_owner_id,
               pet_name: e.pet_name,
               pet_desc: e.pet_desc,
               pet_img: e.pet_img,
@@ -271,7 +273,7 @@ class PetOwnerController {
               deleteFile(img, "pets-img");
             }
 
-            res.redirect("/petOwners")
+            res.redirect("/petOwners");
           }
         });
       }

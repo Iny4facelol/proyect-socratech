@@ -52,16 +52,19 @@ class PetController {
     AND pet.pet_is_deleted = false 
     WHERE pet_owner.pet_owner_is_deleted = false
     AND pet_owner.pet_owner_id = ? 
-    AND pet.pet_id = ?
+    ORDER BY 
+    CASE WHEN pet.pet_id = ? THEN 0 ELSE 1
+    END,
+    pet.pet_name
     `;
 
     connection.query(sql, values, (err, result) => {
       if (err) {
         throw err;
       } else {
-        console.log(result);
+        console.log("EL RESULTADO",result);
 
-        res.render("onePet", { data: result[0] });
+        res.render("onePet", { data: result });
       }
     });
   };

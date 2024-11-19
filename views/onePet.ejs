@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/javascripts/tailwind.js"></script>
+    <link rel="stylesheet" href="/stylesheets/common.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
       rel="stylesheet"
@@ -15,10 +16,11 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <%- include("./modules/favicon.ejs") %>
+    <% data.slice(0,1).forEach((data) => { %> <%-
+    include("./modules/favicon.ejs") %>
     <title>Perfil de <%= data.pet_name %></title>
   </head>
-  <body class="dark:bg-gray-800">
+  <body class="bg-white font-['Raleway']">
     <header><%- include("./modules/nav.ejs") %></header>
     <main>
       <%- include("./modules/logoSection.ejs") %>
@@ -28,8 +30,8 @@
         >
           <article class="w-full sm:w-3/4 lg:w-2/4">
             <img
-              class="w-full h-56 sm:h-[300px] object-cover"
-              src="/images/pets-img/<%= data.pet_img?data.pet_img:'defaultPet.png' %>"
+              class="w-full h-56 sm:h-[350px] object-cover"
+              src="/images/pets-img/<%= data.pet_img?data.pet_img:'defaultNoImg.webp' %>"
               alt="Fotito de mascota"
             />
           </article>
@@ -57,12 +59,80 @@
                 Editar Mascota
               </button>
               <button
-                onclick="window.location.href='/pets/totalDelete/<%= data.pet_owner_id %>/<%= data.pet_id %>'"
                 type="button"
                 class="text-white bg-mainBlue hover:bg-hoverBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                data-modal-target="popup-modal"
+                data-modal-toggle="popup-modal"
               >
                 Borrar Mascota
               </button>
+              <div
+                id="popup-modal"
+                tabindex="-1"
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+              >
+                <div class="relative p-4 w-full max-w-md max-h-full">
+                  <div class="relative bg-mainBlue rounded-lg shadow">
+                    <button
+                      type="button"
+                      class="absolute top-3 end-2.5 text-white bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                      data-modal-hide="popup-modal"
+                    >
+                      <svg
+                        class="w-3 h-3"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 14 14"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                        />
+                      </svg>
+                      <span class="sr-only">Cerrar modal</span>
+                    </button>
+                    <div class="p-4 md:p-5 text-center">
+                      <svg
+                        class="mx-auto mb-4 text-white w-12 h-12"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                        />
+                      </svg>
+                      <h3 class="mb-5 text-lg text-white font-bold">
+                        ¿Estás seguro que quieres borrar el perfil de mascota?
+                      </h3>
+                      <button
+                        onclick="window.location.href='/pets/totalDelete/<%= data.pet_owner_id %>/<%= data.pet_id %>'"
+                        data-modal-hide="popup-modal"
+                        type="button"
+                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
+                      >
+                        Si, lo tengo claro
+                      </button>
+                      <button
+                        data-modal-hide="popup-modal"
+                        type="button"
+                        class="py-2.5 px-5 ms-3 text-sm font-medium text-mainBlue focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100"
+                      >
+                        No, cancelar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <button
                 onclick="window.location.href='/pets/logicDelete/<%= data.pet_owner_id %>/<%= data.pet_id %>'"
                 type="button"
@@ -74,7 +144,7 @@
           </article>
         </div>
       </section>
-      <section class="mb-24">
+      <section class="bg-thirdBlue py-10 mb-24">
         <div class="max-w-screen-xl mx-auto px-6 sm:px-4">
           <article class="flex flex-col justify-center items-center">
             <h2
@@ -93,6 +163,64 @@
             </p>
             <p>Teléfono: <%= data.phone_num %></p>
             <p>Dirección: <%= data.address %>.</p>
+          </article>
+        </div>
+      </section>
+      <section class="mb-24">
+        <div class="max-w-screen-xl mx-auto px-4">
+          <div class="flex flex-col justify-center items-center py-10 gap-4">
+            <h2
+            class="text-mainBlue text-center font-bold text-2xl sm:text-3xl"
+            >
+            Otras mascotas en adopción por <%= data.pet_owner_name %>
+          </h2>
+          <img
+          src="/images/assets/diamond.png"
+          alt="Subtitulo en forma de diamante"
+          />
+          <% }) %>
+          </div>
+          <article
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 py-5 gap-10"
+          >
+            <% const colores = ['bg-cardRed', 'bg-cardBlue', 'bg-cardYellow'] %>
+            <% data.slice(1).forEach((pet, i) => { %>
+            <div
+              class="w-full <%= colores[i % colores.length] %> border border-mainBlue rounded-lg overflow-hidden"
+            >
+              <div class="overflow-hidden">
+                <img
+                  onclick="window.location.href='/pets/onePet/<%= pet.pet_owner_id %>/<%= pet.pet_id %>'"
+                  class="rounded-t-lg w-full h-80 object-cover cursor-pointer hover:scale-125 transition duration-300 ease-in"
+                  src="/images/pets-img/<%= pet.pet_img?pet.pet_img:'defaultCat.webp' %>"
+                  alt="Mascota"
+                />
+              </div>
+              <div class="p-5">
+                <a
+                  href="/categories/<%= pet.category_id %>"
+                  class="mb-2 text-xs uppercase text-mainBlue font-extrabold tracking-tight text-gray-900"
+                >
+                  <%= pet.category_name %>
+                </a>
+                <h5
+                  class="mb-2 text-3xl font-bold tracking-tight text-gray-900"
+                >
+                  <%= pet.pet_name %>
+                </h5>
+                <p class="mb-3 leading-relaxed text-pretty text-gray-700">
+                  <%= pet.pet_desc %>
+                </p>
+                <div class="w-full h-0.5 bg-mainBlue mb-4"></div>
+                <a
+                  href="/petOwners/oneOwner/<%= pet.pet_owner_id %>"
+                  class="mb-3 font-medium text-mainBlue hover:underline"
+                >
+                  <%= pet.pet_owner_name %>
+                </a>
+              </div>
+            </div>
+            <% }) %>
           </article>
         </div>
       </section>

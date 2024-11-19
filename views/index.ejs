@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
     <%- include("./modules/favicon.ejs") %>
-    <title>PawFound</title>
+    <title>PawFound | Adopta una Mascota y Cambia una Vida </title>
   </head>
   <body class="bg-white font-['Raleway']">
     <%- include("./modules/nav.ejs") %>
@@ -27,24 +27,26 @@
       <%- include("./modules/logoSection.ejs") %>
       <section class="bg-secondBlue mb-24">
         <div
-          class="max-w-screen-xl mx-auto flex flex-col sm:flex-row px-5 gap-5"
+          class="max-w-screen-xl mx-auto flex flex-col md:flex-row px-5 gap-5"
         >
           <article
-            class="flex flex-col gap-5 justify-center items-start py-5 lg:py-10"
+            class="flex flex-col gap-5 justify-center items-center md:items-start py-5 sm:py-0 lg:py-10"
           >
             <div
-              class="bg-secondBlue sm:bg-white px-10 md:py-5 lg:py-10 md:w-3/4"
+              class="bg-secondBlue lg:bg-white px-10 py-5 sm:py-0 lg:py-10 md:w-3/4"
             >
-              <h1 class="text-mainBlue font-bold text-3xl mb-2">
+              <h1
+                class="text-mainBlue text-center md:text-left pt-5 md:pt-0 font-bold text-3xl mb-2"
+              >
                 ¿Estás listo para cambiar una vida?
               </h1>
-              <p>
+              <p class="text-center md:text-left">
                 En <span class="font-bold">PawFound</span> creemos que cada
                 mascota merece un hogar lleno de amor.
               </p>
             </div>
           </article>
-          <article>
+          <article class="select-none">
             <img
               class="w-full"
               src="/images/assets/heroImg.png"
@@ -58,7 +60,7 @@
           class="max-w-screen-xl mx-auto px-5 flex gap-36 justify-center lg: justify-left"
         >
           <article
-            class="flex flex-col gap-5 w-full sm:w-2/4 flex flex-col justify-center"
+            class="flex flex-col gap-5 w-full lg:w-2/4 flex flex-col justify-center"
           >
             <h2
               class="text-mainBlue text-left font-bold text-2xl sm:text-3xl mb-2 txt-1"
@@ -87,7 +89,7 @@
               animal que lo necesita.
             </p>
           </article>
-          <article class="w-2/4 hidden lg:block">
+          <article class="w-2/4 hidden lg:block select-none">
             <img
               class="w-full h-[355px]"
               src="images/assets/img-01.webp"
@@ -101,7 +103,7 @@
           class="max-w-screen-xl px-5 mx-auto flex flex-col justify-center items-center"
         >
           <div
-            class="w-96 flex flex-col items-center justify-center gap-4 py-10"
+            class="w-96 flex flex-col items-center justify-center gap-4 py-10 select-none"
           >
             <img
               class="w-3/4 sm:w-full"
@@ -113,16 +115,17 @@
           <article
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 py-5 gap-10"
           >
-            <% data.slice(0,3).forEach((pet) => { %>
+            <% const colores = ['bg-cardRed', 'bg-cardBlue', 'bg-cardYellow'] %>
+            <% data.slice(0,3).forEach((pet, i) => { %>
             <div
-              class="w-full bg-mainGreen border border-mainBlue rounded-lg dark:bg-gray-800 dark:border-gray-700"
+              class="w-full <%= colores[i % colores.length] %> border border-mainBlue rounded-lg overflow-hidden"
             >
-              <div>
+              <div class="overflow-hidden">
                 <img
                   onclick="window.location.href='/pets/onePet/<%= pet.pet_owner_id %>/<%= pet.pet_id %>'"
-                  class="rounded-t-lg w-full h-80 object-cover cursor-pointer"
+                  class="rounded-t-lg w-full h-80 object-cover cursor-pointer hover:scale-125 transition duration-300 ease-in"
                   src="/images/pets-img/<%= pet.pet_img?pet.pet_img:'defaultCat.webp' %>"
-                  alt=""
+                  alt="Mascota"
                 />
               </div>
               <div class="p-5">
@@ -143,7 +146,7 @@
                 <div class="w-full h-0.5 bg-mainBlue mb-4"></div>
                 <a
                   href="/petOwners/oneOwner/<%= pet.pet_owner_id %>"
-                  class="mb-3 font-normal text-gray-700"
+                  class="mb-3 font-medium text-mainBlue hover:underline"
                 >
                   <%= pet.pet_owner_name %>
                 </a>
@@ -169,16 +172,16 @@
           <article
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
           >
-            <% data.slice(3,6).forEach((pet) => { %>
+            <% data.slice(3,6).forEach((pet, i) => { %>
             <div
-              class="w-full bg-mainGreen border border-mainBlue rounded-lg dark:bg-gray-800 dark:border-gray-700"
+              class="w-full <%= colores[i % colores.length] %> border border-mainBlue rounded-lg overflow-hidden"
             >
-              <div>
+              <div class="overflow-hidden">
                 <img
                   onclick="window.location.href='/pets/onePet/<%= pet.pet_owner_id %>/<%= pet.pet_id %>'"
-                  class="rounded-t-lg w-full h-80 object-cover cursor-pointer"
+                  class="rounded-t-lg w-full h-80 object-cover cursor-pointer hover:scale-125 transition duration-300 ease-in"
                   src="/images/pets-img/<%= pet.pet_img?pet.pet_img:'defaultCat.webp' %>"
-                  alt=""
+                  alt="Mascota"
                 />
               </div>
               <div class="p-5">
@@ -199,7 +202,7 @@
                 <div class="w-full h-0.5 bg-mainBlue mb-4"></div>
                 <a
                   href="/petOwners/oneOwner/<%= pet.pet_owner_id %>"
-                  class="mb-3 font-normal text-gray-700 dark:text-gray-400"
+                  class="mb-3 font-medium text-mainBlue hover:underline"
                 >
                   <%= pet.pet_owner_name %>
                 </a>
@@ -210,7 +213,7 @@
         </div>
       </section>
       <div
-        class="max-w-screen-2xl sticky mx-auto bottom-5 flex justify-end p-2 z-10"
+        class="max-w-screen-2xl sticky mx-auto bottom-5 justify-end p-2 z-10 hidden xl:flex"
       >
         <div
           id="scrollUp"

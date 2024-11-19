@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/javascripts/tailwind.js"></script>
+    <link rel="stylesheet" href="/stylesheets/common.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
       rel="stylesheet"
@@ -16,7 +17,7 @@
       rel="stylesheet"
     />
     <%- include("./modules/favicon.ejs") %>
-    <title>Personajes</title>
+    <title>PawFound | Usuarios</title>
   </head>
   <body class="bg-white font-['Raleway']">
     <header><%- include("./modules/nav.ejs") %></header>
@@ -29,19 +30,19 @@
           >
             <% data.forEach((owner) => { %>
             <div
-              onclick="window.location.href='/petOwners/oneOwner/<%= owner.pet_owner_id %>'"
-              class="w-full bg-mainGreen border border-mainBlue rounded-lg dark:bg-gray-800 dark:border-gray-700"
+              class="w-full bg-mainGreen border border-mainBlue rounded-lg hover:shadow-lg transition duration-300 ease-in"
             >
               <div>
                 <img
+                  onclick="window.location.href='/petOwners/oneOwner/<%= owner.pet_owner_id %>'"
                   class="rounded-t-lg w-full h-80 object-cover cursor-pointer"
-                  src="/images/owner-img/<%= owner.pet_owner_img?owner.pet_owner_img:'defaultOwner.webp' %>"
+                  src="/images/owner-img/<%= owner.pet_owner_img?owner.pet_owner_img:'defaultNoImg.webp' %>"
                   alt=""
                 />
               </div>
               <div class="p-5">
                 <h5
-                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900"
                 >
                   <%= owner.pet_owner_name %> <%= owner.pet_owner_lastname %>
                 </h5>

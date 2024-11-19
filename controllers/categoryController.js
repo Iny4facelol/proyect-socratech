@@ -3,7 +3,7 @@ const connection = require("../config/db");
 class CategoryController {
   openDogs = (req, res) => {
     let sql = `
-    SELECT pet.*, pet_owner.pet_owner_name,category.category_name FROM pet 
+    SELECT pet.*, pet_owner.pet_owner_name,pet_owner.pet_owner_id,category.category_name FROM pet 
 	  LEFT JOIN pet_owner ON pet.pet_owner_id = pet_owner.pet_owner_id 
 	  LEFT JOIN category ON pet.category_id = category.category_id
     WHERE pet.category_id = 1 

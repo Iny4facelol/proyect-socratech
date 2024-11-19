@@ -5,19 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/javascripts/tailwind.js"></script>
-
+    <link rel="stylesheet" href="/stylesheets/common.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <%- include("./modules/favicon.ejs") %>
-    <title>Registro de Mascota</title>
+    <title>PawFound | Registro de mascota</title>
   </head>
-  <body class="dark:bg-gray-700">
+  <body class="bg-white font-['Raleway']">
     <header><%- include("./modules/nav.ejs") %></header>
     <%- include("./modules/logoSection.ejs") %>
     <main>
-      <section class="w-2/4 mx-auto py-5">
+      <section class="mb-24 w-2/4 mx-auto py-5">
         <form
           action="/pets/register"
           method="post"
@@ -26,61 +32,61 @@
           <div class="mb-5">
             <label
               for="name"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              class="block mb-2 text-sm font-medium text-gray-900"
               >Nombre de la mascota *</label
             >
             <input
               name="pet_name"
               type="text"
               id="name"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainBlue focus:border-mainBlue block w-full p-2.5"
               placeholder="John"
             />
           </div>
           <div class="mb-5">
             <label
               for="description"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              class="block mb-2 text-sm font-medium text-gray-900"
               >Descripción *</label
             >
             <input
               name="pet_desc"
               type="text"
               id="description"
-              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-mainBlue focus:border-mainBlue"
             />
           </div>
           <div class="mb-6">
             <label
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              class="block mb-2 text-sm font-medium text-gray-900"
               for="user_avatar"
               >Imagen de la mascota *</label
             >
             <input
               name="img"
-              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
               aria-describedby="user_avatar_help"
               id="user_avatar"
               type="file"
             />
-            <div
-              class="mt-1 text-sm text-gray-500 dark:text-gray-300"
-              id="user_avatar_help"
-            >
+            <div class="mt-1 text-sm text-gray-500" id="user_avatar_help">
               Sube una bonita imagen de tu compañero
             </div>
           </div>
           <div class="mb-6">
             <label
               for="category"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              class="block mb-2 text-sm font-medium text-gray-900"
               >¿Qué tipo de animal es? *</label
             >
             <select
               name="category_id"
               id="category"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainBlue focus:border-mainBlue block w-full p-2.5"
             >
+              <option selected disabled value="">
+                Selecciona una categoría
+              </option>
               <% dataCategory.forEach((category) => { %>
               <option value="<%= category.category_id %>">
                 <%= category.category_name %>
@@ -91,14 +97,15 @@
           <div class="mb-6">
             <label
               for="pet_owner_id"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              class="block mb-2 text-sm font-medium text-gray-900"
               >¿A que usuario pertenece? *</label
             >
             <select
               name="pet_owner_id"
               id="pet_owner_id"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainBlue focus:border-mainBlue block w-full p-2.5"
             >
+              <option selected disabled value="">Selecciona un usuario</option>
               <% dataOwner.forEach((owner) => { %>
               <option value="<%= owner.pet_owner_id %>">
                 <%= owner.pet_owner_name %>
@@ -109,25 +116,21 @@
           <p class="text-red-600 pb-4">
             <%= typeof message != "undefined" ? message: null %>
           </p>
-          <button
-            type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Enviar
-          </button>
-          <button
-            onclick="window.location.href='/'"
-            type="button"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Cancelar
-          </button>
-          <p class="py-5 text-black">
-            ¿Ya has registado a tu mascota?
-            <a class="text-orange-500" href="/petOwners/login"
-              >Mira todas aquí</a
+          <div class="flex gap-2 md:flex-row flex-col gap-y-2">
+            <button
+              type="submit"
+              class="text-white bg-mainBlue hover:bg-hoverBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
             >
-          </p>
+              Enviar
+            </button>
+            <button
+              onclick="window.location.href='/'"
+              type="button"
+              class="text-white bg-mainBlue hover:bg-hoverBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            >
+              Cancelar
+            </button>
+          </div>
         </form>
       </section>
     </main>

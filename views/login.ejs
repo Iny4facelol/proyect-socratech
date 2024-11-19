@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/javascripts/tailwind.js"></script>
+    <link rel="stylesheet" href="/stylesheets/common.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
       rel="stylesheet"
@@ -16,7 +17,7 @@
       rel="stylesheet"
     />
     <%- include("./modules/favicon.ejs") %>
-    <title>Acceso</title>
+    <title>PawFound | Acceso</title>
   </head>
   <body class="bg-white font-['Raleway']">
     <header><%- include("./modules/nav.ejs") %></header>
@@ -25,9 +26,7 @@
       <section class="w-2/4 mx-auto py-5 mb-24">
         <form action="/petOwners/login" method="post">
           <div class="mb-6">
-            <label
-              for="email"
-              class="block mb-2 font-medium text-gray-900 dark:text-white"
+            <label for="email" class="block mb-2 font-medium text-gray-900"
               >Tu Email</label
             >
             <div class="relative">
@@ -35,7 +34,7 @@
                 class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
               >
                 <svg
-                  class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  class="w-4 h-4 text-gray-500"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -53,7 +52,7 @@
                 name="email"
                 type="text"
                 id="email"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainBlue focus:border-mainBlue block w-full ps-10 p-2.5"
                 placeholder="tucorreo@email.com"
               />
             </div>
@@ -63,16 +62,14 @@
           </div>
 
           <div class="mb-6">
-            <label
-              for="password"
-              class="block mb-2 font-medium text-gray-900 dark:text-white"
+            <label for="password" class="block mb-2 font-medium text-gray-900"
               >Contraseña</label
             >
             <input
               name="password"
               type="password"
               id="password"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainBlue focus:border-mainBlue block w-full p-2.5"
               placeholder="•••••••••"
             />
           </div>

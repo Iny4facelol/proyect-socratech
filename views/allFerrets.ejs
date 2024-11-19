@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/javascripts/tailwind.js"></script>
+    <link rel="stylesheet" href="/stylesheets/common.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
       rel="stylesheet"
@@ -16,7 +17,7 @@
       rel="stylesheet"
     />
     <%- include("./modules/favicon.ejs") %>
-    <title>Personajes</title>
+    <title>PawFound | Todos los hurones</title>
   </head>
   <body class="bg-white font-['Raleway']">
     <header><%- include("./modules/nav.ejs") %></header>
@@ -29,13 +30,13 @@
           >
             <% data.forEach((ferret) => { %>
             <div
-              onclick="window.location.href='/petOwners/oneOwner/<%= ferret.pet_owner_id %>'"
-              class="w-full bg-mainGreen border border-mainBlue rounded-lg dark:bg-gray-800 dark:border-gray-700"
+              class="w-full bg-cardYellow border border-mainBlue rounded-lg overflow-hidden"
             >
-              <div>
+              <div class="overflow-hidden">
                 <img
-                  class="rounded-t-lg w-full h-80 object-cover cursor-pointer"
-                  src="/images/pets-img/<%= ferret.pet_img?ferret.pet_img:'defaultDog.avif' %>"
+                  onclick="window.location.href='/petOwners/oneOwner/<%= ferret.pet_owner_id %>'"
+                  class="rounded-t-lg w-full h-80 object-cover cursor-pointer hover:scale-125 transition duration-300 ease-in"
+                  src="/images/pets-img/<%= ferret.pet_img?ferret.pet_img:'defaultNoImg.webp' %>"
                   alt=""
                 />
               </div>
